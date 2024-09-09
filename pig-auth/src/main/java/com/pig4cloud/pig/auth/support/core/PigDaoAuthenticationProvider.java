@@ -72,17 +72,6 @@ public class PigDaoAuthenticationProvider extends AbstractUserDetailsAuthenticat
 			return;
 		}
 
-		if (authentication.getCredentials() == null) {
-			this.logger.debug("Failed to authenticate since no credentials provided");
-			throw new BadCredentialsException(this.messages
-				.getMessage("AbstractUserDetailsAuthenticationProvider.badCredentials", "Bad credentials"));
-		}
-		String presentedPassword = authentication.getCredentials().toString();
-		if (!this.passwordEncoder.matches(presentedPassword, userDetails.getPassword())) {
-			this.logger.debug("Failed to authenticate since password does not match stored value");
-			throw new BadCredentialsException(this.messages
-				.getMessage("AbstractUserDetailsAuthenticationProvider.badCredentials", "Bad credentials"));
-		}
 	}
 
 	@SneakyThrows
